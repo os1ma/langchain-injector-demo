@@ -1,1 +1,1 @@
-# python-project-template
+# langchain-injector-sample
