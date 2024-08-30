@@ -35,7 +35,7 @@ class WebRetrievalChain:
         return chain.invoke(question)
 
 
-class OpenAIModule(Module):
+class ProdModule(Module):
     @provider
     def model(self) -> BaseChatModel:
         return ChatOpenAI(model="gpt-4o-mini")
@@ -46,7 +46,7 @@ class OpenAIModule(Module):
 
 
 def main() -> None:
-    injector = Injector([OpenAIModule()])
+    injector = Injector([ProdModule()])
     chain = injector.get(WebRetrievalChain)
     output = chain.invoke("東京の明日の天気は？")
     print(output)

@@ -8,7 +8,7 @@ from langchain_core.runnables import RunnableLambda
 from src.chain import WebRetrievalChain
 
 
-class FakeModule(Module):
+class TestModule(Module):
     @provider
     def model(self) -> BaseChatModel:
         responses: list[BaseMessage] = [AIMessage("fake output")]
@@ -20,7 +20,7 @@ class FakeModule(Module):
 
 
 def test_web_retrieval_chain() -> None:
-    injector = Injector([FakeModule()])
+    injector = Injector([TestModule()])
     chain = injector.get(WebRetrievalChain)
     output = chain.invoke("東京の明日の天気は？")
     assert output == "fake output"
