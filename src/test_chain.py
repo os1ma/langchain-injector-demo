@@ -19,7 +19,7 @@ class TestModule(Module):
         return RunnableLambda(lambda _: [Document("fake document")])
 
 
-def test_web_retrieval_chain() -> None:
+def test_retrieval_chain() -> None:
     injector = Injector([TestModule()])
     chain = injector.get(RetrievalChain)
     output = chain.invoke("東京の明日の天気は？")
