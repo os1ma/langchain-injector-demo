@@ -5,7 +5,7 @@ from langchain_core.messages import AIMessage, BaseMessage
 from langchain_core.retrievers import RetrieverLike
 from langchain_core.runnables import RunnableLambda
 
-from src.chain import WebRetrievalChain
+from src.chain import RetrievalChain
 
 
 class TestModule(Module):
@@ -21,6 +21,6 @@ class TestModule(Module):
 
 def test_web_retrieval_chain() -> None:
     injector = Injector([TestModule()])
-    chain = injector.get(WebRetrievalChain)
+    chain = injector.get(RetrievalChain)
     output = chain.invoke("東京の明日の天気は？")
     assert output == "fake output"

@@ -11,7 +11,7 @@ from langchain_openai import ChatOpenAI
 load_dotenv(override=True)
 
 
-class WebRetrievalChain:
+class RetrievalChain:
     @inject
     def __init__(self, model: BaseChatModel, retriever: RetrieverLike):
         self.model = model
@@ -47,7 +47,7 @@ class ProdModule(Module):
 
 def main() -> None:
     injector = Injector([ProdModule()])
-    chain = injector.get(WebRetrievalChain)
+    chain = injector.get(RetrievalChain)
     output = chain.invoke("東京の明日の天気は？")
     print(output)
 
